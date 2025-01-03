@@ -1,0 +1,33 @@
+version: '3.1'
+services:
+  database-tweet:
+    container_name: database-tweet
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'tweet_db'
+      MYSQL_USER: 'tweet_user'
+      MYSQL_PASSWORD: 'passw'
+      MYSQL_ROOT_PASSWORD: 'passw'
+    ports:
+      - '3306:3306'
+    volumes:
+      - my-db-tweet:/var/lib/mysql
+
+  database-user:
+    container_name: database-user
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'user_db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'passw'
+      MYSQL_ROOT_PASSWORD: 'passw'
+    ports:
+      - '3307:3306'
+    volumes:
+      - my-db-user:/var/lib/mysql
+
+volumes:
+  my-db-tweet:
+  my-db-user:

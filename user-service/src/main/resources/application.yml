@@ -1,0 +1,37 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: ${DRIVER_DB:com.mysql.cj.jdbc.Driver}
+    username: ${USER_DB:root}
+    password: ${PASSWORD_DB:passw}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3307/user_db
+  jpa:
+    defer-datasource-initialization: true
+    properties.hibernate.format_sql: true
+    generate-ddl: true
+    hibernate.ddl.auto: create
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    enabled: false
+    serviceUrl:
+      defaultZone: http://localhost:9000/eureka
+
+jwt:
+  secret: screte-value
+  expiration: 86400000
+
+# Default user
+admin:
+  id: 2f2ae456-19b4-4173-9d4h-02acf091faa6
+  username: test
+  email: test@gmail.com
+  password: passw
+  isHotUser: true
