@@ -1,0 +1,8 @@
+rootProject.name = 'twitter_app'
+include(":tweet-service", ":eureka-service", ":user-service", ":gateway-service")
+include 'gateway-service'
+include 'tweet-service'
+include 'user-service'
+include 'user-service'
+include 'eurica-service'
+
