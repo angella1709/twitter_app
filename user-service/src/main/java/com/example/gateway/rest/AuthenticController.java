@@ -2,7 +2,7 @@ package com.example.gateway.rest;
 
 import com.example.domain.service.impl.TokenService;
 import com.example.gateway.rest.datacontract.LoginDataContract;
-import com.example.gateway.rest.datacontract.TokenDto;
+import com.example.gateway.rest.datacontract.TokenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
-public class AuthenticationController {
+public class AuthenticController {
     @Autowired
     private AuthenticationManager authManager;
 
@@ -26,14 +26,14 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<TokenDto> authenticate(@RequestBody @Valid LoginDataContract form) {
+    public ResponseEntity<TokenDTO> authenticate(@RequestBody @Valid LoginDataContract form) {
         UsernamePasswordAuthenticationToken dadosLogin = form.converter();
 
         try {
             Authentication authentication = authManager.authenticate(dadosLogin);
             String token = tokenService.generateToken(authentication);
 
-            return ResponseEntity.ok(new TokenDto(token, "Bearer"));
+            return ResponseEntity.ok(new TokenDTO(token, "Bearer"));
         } catch (AuthenticationException e) {
             return ResponseEntity.badRequest().build();
         }

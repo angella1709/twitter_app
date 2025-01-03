@@ -1,6 +1,6 @@
 package com.example.config;
 
-import com.example.domain.service.impl.AuthenticationService;
+import com.example.domain.service.impl.AuthenticService;
 import com.example.domain.service.impl.TokenService;
 import com.example.gateway.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +18,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private AuthenticationService authenticationService;
+    private AuthenticService authenticationService;
 
     @Autowired
     private TokenService tokenService;

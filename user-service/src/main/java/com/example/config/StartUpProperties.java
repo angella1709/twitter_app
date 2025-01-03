@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "admin")
-public class StartupProperties {
+public class StartUpProperties {
 
     private String id;
 

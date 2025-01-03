@@ -18,7 +18,7 @@ import java.util.List;
 public class AppStartUp {
 
     @Autowired
-    private StartupProperties startupProperties;
+    private StartUpProperties startupProperties;
 
     @Bean
     public CommandLineRunner loadData(UserRepository userRepository, RoleRepository roleRepository) {
